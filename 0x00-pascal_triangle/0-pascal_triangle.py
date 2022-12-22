@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 class Solution:
     def pascal_triangle(n):
         res = [[1]]
