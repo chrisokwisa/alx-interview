@@ -1,23 +1,23 @@
 #!/usr/bin/python3
-""" determines if each box contains keys to the other boxes"""
+"""Determines if all boxes can be opened """
 
 
 def canUnlockAll(boxes):
-    """ This method determines if all the boxes can opened """
-    # set  of the visited boxes
+    """ Determines if all the boxes can be opened """
+    # Set of visited boxes
     visited = set()
 
-    # Recusrsive helper function to explore all reachablr boxes
+    # Recursive helper function to explore all reachable boxes
     def dfs(i):
         # Mark the current box as visited
         visited.add(i)
 
-        # Explore each box that cn be reached from the current box
+        # Explore each box that can be reached from the current box
         for j in boxes[i]:
             if j not in visited:
                 dfs(j)
 
-    # start the depth-first
+    # Start the depth-first search from the first box (which is unlocked)
     dfs(0)
 
     return len(visited) == len(boxes)
