@@ -19,6 +19,8 @@ def canUnlockAll(boxes):
                 dfs(j)
 
     # start the depth-first search to explore all the boxes that can be reached from the first box, False otherwise
+    dfs(0)
+    
     return len(visited) == len(boxes)
 
 
