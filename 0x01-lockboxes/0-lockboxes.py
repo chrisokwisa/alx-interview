@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-""" determines if each box contains keys to the other boxes
-"""
+""" determines if each box contains keys to the other boxes"""
 
 
 def canUnlockAll(boxes):
