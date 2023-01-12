@@ -2,7 +2,7 @@
 """ Gets the minimum operations """
 
 
-def minoperations(n):
+def minOperations(n):
     """ calculates the fewest number of operations
     needed to result in n H charaters"""
     if n <= 0:
