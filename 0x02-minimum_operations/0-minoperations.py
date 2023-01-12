@@ -5,7 +5,7 @@
 def minOperations(n):
     """ calculates the fewest number of operations
     needed to result in n H charaters """
-    if n  0:
+    if n <= 0:
         return 0
     operations = 0
     i = 1
