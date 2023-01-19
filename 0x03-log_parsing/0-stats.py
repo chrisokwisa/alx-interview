@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" gets a script that reads stdin line by line and computes metrics"""
+""" Reads stdin line by line and computes metrics """
 
 
 import sys
@@ -35,3 +35,10 @@ for line in sys.stdin:
     except (ValueError, IndexError):
         # Skip lines with invalid format
         continue
+
+    except KeyboardInterrupt:
+        print("Total file size: " + str(total_size))
+        for status in sorted(status_count.keys()):
+            if status_count[status] > 0:
+                print(str(status) + ": " + str(status_count[status]))
+        break
