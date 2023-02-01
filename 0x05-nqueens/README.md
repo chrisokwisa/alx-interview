@@ -1,4 +1,4 @@
-# 0x05. N Queens``
+# 0x05. N Queens
 
 `Algorithm`
 `Python`
@@ -19,4 +19,4 @@
 - You are only allowed to import the sys module
   ``
 
-* Read: [Queen]{https://intranet.alxswe.com/rltoken/ghWqI1wvx6g-Ul7nrufMKA}, [Backtracking]{https://intranet.alxswe.com/rltoken/-hgZbgRFkwmxaKnLnCIuEQ}
+* Read: [Queen](https://intranet.alxswe.com/rltoken/ghWqI1wvx6g-Ul7nrufMKA), [Backtracking](https://intranet.alxswe.com/rltoken/-hgZbgRFkwmxaKnLnCIuEQ)
