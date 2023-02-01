@@ -34,7 +34,8 @@ def is_not_attacked(board, row, col, N):
 def solve(board, col, N, solutions):
     if col >= N:
         solutions.append([(i, j) for i,
-                          row in enumerate(board) for j, val in enumerate(row) if val])
+                          row in enumerate(board) for j, val
+                          in enumerate(row) if val])
         return
 
     for i in range(N):
