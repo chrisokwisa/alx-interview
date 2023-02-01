@@ -3,49 +3,47 @@
 import sys
 
 
-def nqueens(n):
-    """# function to solve N queens problem
-    # implementation of backtracking algorithm
-    """
-    def is_not_under_attack(row, col):
-        # check if a queen can be placed in cell (row, col)
-        for i in range(row):
-            if board[i] == col or \
-               abs(board[i] - col) == abs(i - row):
-                return False
-        return True
+def nqueens(n, board, row, result):
+    """takes the four arguments n, the number of the queens
+    board, the current state of the chessboard row...   """
+    if row == n:
+        result.append(list(board))
+        return
+    for col in range(n):
+        if is_valid(board, row, col, n):
+            board[row] = col
+            nqueens(n, board, row + 1, result)
 
-    def solve(row):
-        if row == n:
-            result.append(board[:])
-            return
-        for col in range(n):
-            if is_not_under_attack(row, col):
-                board[row] = col
-                solve(row + 1)
 
-    if not isinstance(n, int):
+def is_valid(board, row, col, n):
+    """ checks if the current placement of a queen is valid
+    i,e not attacking any other queens"""
+    for i in range(row):
+        if board[i] == col or \
+                abs(board[i] - col) == abs(i - row):
+            return False
+    return True
+
+
+def main():
+    """ calls the nqueen function and appends the solution
+    to result when all the queens have been placed"""
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        exit(1)
+    if not sys.argv[1].isdigit():
         print("N must be a number")
-        sys.exit(1)
+        exit(1)
+    n = int(sys.argv[1])
     if n < 4:
         print("N must be at least 4")
-        sys.exit(1)
-
-    board = [-1] * n
+        exit(1)
+    board = [-1 for i in range(n)]
     result = []
-    solve(0)
-    return result
+    nqueens(n, board, 0, result)
+    for sol in result:
+        print(sol)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: nqueens N")
-        sys.exit(1)
-    try:
-        n = int(sys.argv[1])
-    except ValueError:
-        print("N must be a number")
-        sys.exit(1)
-    result = nqueens(n)
-    for sol in result:
-        print(sol)
+    main()
