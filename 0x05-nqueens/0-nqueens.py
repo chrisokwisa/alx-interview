@@ -1,9 +1,12 @@
 #!/usr/bin/python3
+"""Solve the N queens using the backtracking solutions """
 import sys
 
+
 def nqueens(n):
-    # function to solve N queens problem
+    """# function to solve N queens problem
     # implementation of backtracking algorithm
+    """
     def is_not_under_attack(row, col):
         # check if a queen can be placed in cell (row, col)
         for i in range(row):
@@ -32,6 +35,7 @@ def nqueens(n):
     result = []
     solve(0)
     return result
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
