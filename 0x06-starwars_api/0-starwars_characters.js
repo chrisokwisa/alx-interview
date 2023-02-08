@@ -1,32 +1,24 @@
 #!/usr/bin/node
-
-const https = require('https');
-
-// The first positional argument passed is the Movie ID
+const request = require('request');
 const movieId = process.argv[2];
+const url = 'https://swapi-api.alx-tools.com/api/films/' + {movieId};
 
-// API URL to retrieve details of the specified movie
-const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
+request(url, function (error, response, body) {
+  if (error) {
+    console.error(error);
+    return;
+  }
 
-https.get(apiUrl, (res) => {
-  let data = '';
-  res.on('data', (chunk) => {
-    data += chunk;
-  });
-  res.on('end', () => {
-    const movie = JSON.parse(data);
-    const characters = movie.characters;
-    characters.forEach((character) => {
-      https.get(character, (res) => {
-        let data = '';
-        res.on('data', (chunk) => {
-          data += chunk;
-        });
-        res.on('end', () => {
-          const characterDetails = JSON.parse(data);
-          console.log(characterDetails.name);
-        });
-      });
+  const film = JSON.parse(body);
+  film.characters.forEach(function (characterUrl) {
+    request(characterUrl, function (error, response, body) {
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      const character = JSON.parse(body);
+      console.log(character.name);
     });
   });
-});
+});\
