@@ -6,7 +6,7 @@ const https = require('https');
 const movieId = process.argv[2];
 
 // API URL to retrieve details of the specified movie
-const apiUrl = `https://swapi.dev/api/films/${movieId}/`;
+const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
 
 https.get(apiUrl, (res) => {
   let data = '';
