@@ -4,26 +4,28 @@
 
 def makeChange(coins, total):
     """ determins the fewest number of coins needed """
-    # If total is 0 or less, return 0
     if total <= 0:
         return 0
 
-    # Initialize a list 'dp' of length 'total+1' to store
-    # the minimum number of coins needed to reach each amount
-    dp = [float('inf')]*(total+1)
-    # Set the number of coins needed to reach 0 to 0
+    # Create a list to store the minimum number of coins needed
+    # to make up each value from 0 to total
+    dp = [float('inf')] * (total+1)
     dp[0] = 0
 
-    # For each amount from 1 to 'total'
+    # Iterate over the list dp from index 1 to total+1
     for i in range(1, total+1):
-        # For each coin in 'coins'
+        # Iterate over the list of coins
         for coin in coins:
-            # If the coin is less than or equal to the current amount 'i'
+            # Check if the value of the current coin is less than or equal to i
             if coin <= i:
-                # Update the minimum number of coins needed
-                # to reach the current amount
-                dp[i] = min(dp[i], dp[i-coin]+1)
+                # Calculate the minimum number of coins
+                # needed to make up the remaining value
+                subproblem = dp[i-coin] + 1
+                # Update dp[i] if the new value is smaller
+                dp[i] = min(dp[i], subproblem)
 
-    # If total cannot be met by any number of coins you have, return -1
-    # Otherwise, return the minimum number of coins needed to reach 'total'
-    return dp[total] if dp[total] != float('inf') else -1
+    # Check if a solution was found
+    if dp[total] == float('inf'):
+        return -1
+    else:
+        return dp[total]
