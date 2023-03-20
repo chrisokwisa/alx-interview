@@ -3,9 +3,8 @@ Maria and Ben are playing a game where they take turns choosing a prime number a
 
 # Prototype
 
-```def isWinner(x: int, nums: List[int]) -> Union[str, None]:
+``` def isWinner(x: int, nums: List[int]) -> Union[str, None]:
     pass
-
 ```
 
 # Input
