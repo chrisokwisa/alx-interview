@@ -3,11 +3,13 @@ Maria and Ben are playing a game where they take turns choosing a prime number a
 
 # Prototype
 
+
 ``` 
 def isWinner(x: int, nums: List[int]) -> Union[str, None]:
     
 pass
-```
+
+``` 
 
 # Input
 *  `x`: an integer, the number of rounds to play (1 <= x <= 10000)
